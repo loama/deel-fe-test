@@ -21,21 +21,22 @@ class App extends React.Component {
     const data = response.data;
 
     const options = [];
-    for (let i = 0; i < data.length; i++) {
-      let option = data[i];
-      option = option.toLowerCase();
-      if (option.includes(value.toLowerCase())) {
-        const changedOption = {
-          __html: option.replaceAll(
-            value.toLowerCase(),
-            "<div class='match'>" + value.toLowerCase() + "<div>"
-          ),
-        };
-        console.log(changedOption);
-        options.push(changedOption);
+
+    if (this.state.value.length > 0) {
+      for (let i = 0; i < data.length; i++) {
+        let option = data[i];
+        option = option.toLowerCase();
+        if (option.includes(value.toLowerCase())) {
+          const changedOption = {
+            __html: option.replace(
+              value.toLowerCase(),
+              "<div class='match'>" + value.toLowerCase() + "<div>"
+            ),
+          };
+          options.push(changedOption);
+        }
       }
     }
-    console.log(options);
     self.setState({
       options: options,
     });
@@ -43,7 +44,9 @@ class App extends React.Component {
 
   render() {
     const options = this.state.options;
-    const listItems = options.map((option) => (
+    let listItems = [];
+
+    listItems = options.map((option) => (
       <li dangerouslySetInnerHTML={option} />
     ));
 
@@ -58,14 +61,17 @@ class App extends React.Component {
 
     return (
       <div>
+        <div className="navbar">
+          <img src="/logo.svg" />
+        </div>
+
         <input
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
+          placeholder="Australia"
         />
-        <div>{}</div>
-        {this.state.value}
-        {listItems}
+        <div className="list">{listItems}</div>
         <div className="emptyMessage">{emptyMessage}</div>
       </div>
     );

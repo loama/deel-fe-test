@@ -1,12 +1,66 @@
+html,
+body {
+  background: #f4f4f4;
+}
+
 .App {
+}
+
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  height: 56px;
+  text-align: center;
+}
+
+.navbar img {
+  height: 32px;
+  margin-top: 12px;
+}
+
+input {
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  height: 40px;
+  line-height: 40px;
+  margin: 16px calc(50vw - 100px) 0;
+  outline: none;
+  padding: 0 8px;
+  width: 184px;
+}
+
+input:focus {
+  border: 1px solid purple;
+}
+
+.list {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  list-style: none;
+  margin: -1px calc(50vw - 100px) 0;
+  padding: 0 8px;
+  width: 184px;
+}
+
+li {
+  height: 40px;
+  line-height: 40px;
+}
+
+.emptyMessage {
+  font-size: 14px;
+  margin: 16px calc(50vw - 100px);
+  padding: 0 8px;
+  width: 184px;
 }
 
 .match {
   color: red;
-  list-style: none;
+  display: inline-block;
 }
 
 .match div {
   color: black;
   display: inline-block;
+  text-transform: none;
 }
