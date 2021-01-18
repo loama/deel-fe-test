@@ -45,6 +45,9 @@ input:focus {
 li {
   height: 40px;
   line-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .emptyMessage {
@@ -56,11 +59,11 @@ li {
 
 .match {
   color: red;
-  display: inline-block;
+  display: inline;
 }
 
 .match div {
   color: black;
-  display: inline-block;
+  display: inline;
   text-transform: none;
 }
