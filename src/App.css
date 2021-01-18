@@ -1,2 +1,12 @@
 .App {
 }
+
+.match {
+  color: red;
+  list-style: none;
+}
+
+.match div {
+  color: black;
+  display: inline-block;
+}

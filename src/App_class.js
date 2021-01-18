@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import "./App.css";
+
 // options.map((option) => <li>{option.value}</li>
 class App extends React.Component {
   constructor(props) {
@@ -17,9 +19,22 @@ class App extends React.Component {
     const response = await axios.get("/api/countries.json");
 
     const data = response.data;
-    const options = data.filter((country) =>
-      country.toLowerCase().includes(value.toLowerCase())
-    );
+
+    const options = [];
+    for (let i = 0; i < data.length; i++) {
+      let option = data[i];
+      option = option.toLowerCase();
+      if (option.includes(value.toLowerCase())) {
+        const changedOption = {
+          __html: option.replaceAll(
+            value.toLowerCase(),
+            "<div class='match'>" + value.toLowerCase() + "<div>"
+          ),
+        };
+        console.log(changedOption);
+        options.push(changedOption);
+      }
+    }
     console.log(options);
     self.setState({
       options: options,
@@ -28,7 +43,9 @@ class App extends React.Component {
 
   render() {
     const options = this.state.options;
-    const listItems = options.map((option) => <li>{option}</li>);
+    const listItems = options.map((option) => (
+      <li dangerouslySetInnerHTML={option} />
+    ));
 
     let emptyMessage = "";
     if (options.length === 0) {
