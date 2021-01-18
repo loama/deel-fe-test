@@ -26,6 +26,9 @@ class App extends React.Component {
       for (let i = 0; i < data.length; i++) {
         let option = data[i];
         option = option.toLowerCase();
+        /*
+          TODO we should use regex to match the string instead of toLowerCase(), that is just a hack
+        */
         if (option.includes(value.toLowerCase())) {
           const changedOption = {
             __html: option.replace(
